@@ -6,8 +6,12 @@ float Magnitude(const float _kfX) {
 	return (_kfX < 0.0f) ? _kfX * -1.0f : _kfX;
 }
 
-float Signum(const float _kfX);
-
+float Signum(const float _kfX)
+{
+    if (_kfX > 0.0f) return  1.0f;
+    if (_kfX < 0.0f) return -1.0f;
+    return 0.0f;
+}
 float Floor(const float _kfX);
 
 float Ceiling(const float _kfX);
