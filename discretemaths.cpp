@@ -1,6 +1,10 @@
 #include "discretemaths.h"
 
-float Magnitude(const float _kfX);
+// needs to return a real number  
+float Magnitude(const float _kfX) {
+	// is _kfX postive or negitive, if negitive, convert to possitive by mutliplying by -1.   
+	return (_kfX < 0.0f) ? _kfX * -1.0f : _kfX;
+}
 
 float Signum(const float _kfX);
 
