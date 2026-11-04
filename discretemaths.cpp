@@ -1,9 +1,10 @@
 #include "discretemaths.h"
 
+//The size of the variable
 float Magnitude(const float _kfX) {
-	return (_kfX < 0.0f) ? _kfX * -1.0f : _kfX;
+    return (_kfX < 0.0f) ? -_kfX : ((_kfX == 0.0f) ? 0.0f : _kfX);
 }
-
+//Positive, Negitive or 0 
 float Signum(const float _kfX)
 {
     if (_kfX > 0.0f) return  1.0f;
@@ -11,54 +12,147 @@ float Signum(const float _kfX)
     return 0.0f;
 }
 
+//Rounds down towards zero
 float Floor(const float _kfX) {
-    float _fT = static_cast<int>(_kfX);
+    float _fT = static_cast<float>(static_cast<int>(_kfX));
     if (_fT > _kfX) {
         _fT -= 1.0f;
     };
     return _fT;
-};
-
+}
+//Rounds up away from zero
 float Ceiling(const float _kfX) {
-    float _fT = static_cast<int>(_kfX);
+    float _fT = static_cast<float>(static_cast<int>(_kfX));
     if (_fT < _kfX) {
         _fT += 1.0f;
     };
     return _fT;
-};
-
+}
+//Multuply all ints from 1 to given factorial 5 1x2x3x4x5
 unsigned long long Factorial(const unsigned int _kdn) {
     unsigned long long _dr = 1;
+    //skipped 1, starting at 2, because multiply by 1 is useless
     for (unsigned int i = 2; i <= _kdn; ++i) {
         _dr *= i;
     };
     return _dr;
+}
+//Order doesnt matter in combination, so number of ways to choose n from r. n!/(r!(n−r)!)
+unsigned long long Combination(const unsigned int _kuin, const unsigned int _kuir) {
+    return Factorial(_kuin) / (Factorial(_kuir) * Factorial(_kuin - _kuir));
+}
+
+//Order does matter in Permutation n!/(n−r)!
+unsigned long long Permutation(const unsigned int _kuin, const unsigned int _kuir) {
+    return Combination(_kuin, _kuir) * Factorial(_kuir);
+}
+//How many unique elements in a set.
+int Cardinality(Set& _rSet){
+    int _iC = 0;
+    for (int i = 1; i <= SET_SIZE_MAX; i++)
+        if (_rSet.ContainsElement(i)) {
+            _iC++;
+        }
+    return _iC;
+}
+
+//The power set is set of all Subetsets include the set itself and a empty set, this confused me because it return  
+// So i guess return the number of possible subsets? 
+unsigned long long Power(Set& _rSet) {
+    int _iC = Cardinality(_rSet);        
+    unsigned long long _ullR = 1;
+    for (int i = 0; i < _iC; i++) {
+        _ullR *= 2;
+    }
+    return _ullR;
+}
+//All ordered pairs from set a and set b, So the number of of possible pairs ?
+unsigned long long CartesianProduct(Set& _rA, Set& _rB) {
+    unsigned long long _ullA = Cardinality(_rA);
+    unsigned long long _ullB = Cardinality(_rB);
+    return _ullA * _ullB;
 };
+//Test if both sets contains all the same elements
+bool Equals(Set& _rA, Set& _rB) {
+    for (int i = 1; i <= SET_SIZE_MAX; i++)
+    {
+        if (_rA.ContainsElement(i) != _rB.ContainsElement(i))
+            return false;
+    }
+    return true;            
+}
+//Test if all of the element set a are in set b 
+bool Subset(Set& _rA, Set& _rB){
+    for (int i = 1; i <= SET_SIZE_MAX; i++) {
+        if (_rA.ContainsElement(i) && !_rB.ContainsElement(i)){
+            return false;
+        }
+    }
+    return true;
+}
+//Test if all of the element set b are in set a 
+bool Superset(Set& _rA, Set& _rB){
+    for (int i = 1; i <= SET_SIZE_MAX; i++){
+        if (_rB.ContainsElement(i) && !_rA.ContainsElement(i)) {
+            return false;
+        }
+    }
+    return true;           
+}
+//Tests of any elements A are in set B they arent disjoint 
+bool Disjoint(Set& _rA, Set& _rB) {
+    for (int i = 1; i <= SET_SIZE_MAX; i++){
+        if (_rA.ContainsElement(i) && _rB.ContainsElement(i)) {
+            return false;
+        }
+    }
+    return true;
+}
+//Combines set a and set b and returns a new set Resultant
+Set& Union(Set& _rA, Set& _rB, Set& _rResultant){
+    _rResultant.SetClear();
+    for (int i = 1; i <= SET_SIZE_MAX; i++) {
+        if (_rA.ContainsElement(i) || _rB.ContainsElement(i)) {
+            _rResultant.AddElement(i);
+        }
+    }
+    return _rResultant;
+}
 
-unsigned long long Combination(const unsigned int _kuin, const unsigned int _kuir);
-
-unsigned long long Permutation(const unsigned int _kuin, const unsigned int _kuir);
-
-int Cardinality(Set& _rSet);
-
-unsigned long long Power(Set& _rSet);
-
-unsigned long long CartesianProduct(Set& _rA, Set& _rB);
-
-bool Equals(Set& _rA, Set& _rB);
-
-bool Subset(Set& _rA, Set& _rB);
-
-bool Superset(Set& _rA, Set& _rB);
-
-bool Disjoint(Set& _rA, Set& _rB);
-
-Set& Union(Set& _rA, Set& _rB, Set& _rResultant);
-
-Set& Intersection(Set& _rA, Set& _rB, Set& _rResultant);
-
-Set& SetDifference(Set& _rA, Set& _rB, Set& _rResultant);
-
-Set& SymmetricDifference(Set& _rA, Set& _rB, Set& _rResultant);
-
-Set& Complement(Set& _rA, Set& _rResultant);
+//Only returns elements in both set a and set b as Resultant
+Set& Intersection(Set& _rA, Set& _rB, Set& _rResultant){
+    _rResultant.SetClear();
+    for (int i = 1; i <= SET_SIZE_MAX; i++){
+        if (_rA.ContainsElement(i) && _rB.ContainsElement(i)) {
+            _rResultant.AddElement(i);
+        }
+    }
+    return _rResultant;
+}
+//Only returns elements that dont intersect, what is a and not b
+Set& SetDifference(Set& _rA, Set& _rB, Set& _rResultant) {
+    _rResultant.SetClear();                   
+    for (int i = 1; i <= SET_SIZE_MAX; i++){
+        if (_rA.ContainsElement(i) && !_rB.ContainsElement(i))
+            _rResultant.AddElement(i);   
+    }
+    return _rResultant;
+}
+//Only returns elements in a or b not both
+Set& SymmetricDifference(Set& _rA, Set& _rB, Set& _rResultant) {
+    _rResultant.SetClear();
+    for (int i = 1; i <= SET_SIZE_MAX; i++){
+        if (_rA.ContainsElement(i) != _rB.ContainsElement(i))
+            _rResultant.AddElement(i);
+    }
+    return _rResultant;
+}
+//Everything in the univerial set that is not in set a
+Set& Complement(Set& _rA, Set& _rResultant){
+    _rResultant.SetClear();
+    for (int i = 1; i <= SET_SIZE_MAX; i++){
+        if (!_rA.ContainsElement(i))
+            _rResultant.AddElement(i);
+    }
+    return _rResultant;
+}

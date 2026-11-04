@@ -1,8 +1,17 @@
 #include "test.h"
-
-bool PerformTestMagnitude(const float _kfX)
+void RunAlTests() {
+	unsigned int _uiTestsRun = 0;
+	unsigned int _uiPassedTests = 0;
+};
+bool PerformTestMagnitude(const float _kfX, const float _expectedState)
 {
-	return false;
+	if (!(_kfX == _expectedState)) {
+		return false;
+	}
+	else {
+		return true;
+	}
+	 
 }
 
 bool PerformTestSignum(const float _kfX)

@@ -1,10 +1,9 @@
-#include "discretemaths.h"
+#include "test.h"
+
 #include <iostream>
 int main() {
-	float _Magnitude=Magnitude(5.0f);
-	//std::cout << _Magnitude;
-
-	float _Signum = Signum(-5.0f);
-	std::cout << _Signum;
+	std::cout << PerformTestMagnitude(Magnitude(5.00f), 5.00f);
+	std::cout << PerformTestMagnitude(Magnitude(-5.00f), 5.00f);
+	std::cout << PerformTestMagnitude(Magnitude(0.00f), 0.00f);
 	return 0;
 }

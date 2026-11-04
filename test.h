@@ -4,7 +4,8 @@ class test
 {
 };
 
-bool PerformTestMagnitude(const float _kfX);
+void RunAlTests();
+bool PerformTestMagnitude(const float _kfX, const float _expectedState);
 bool PerformTestSignum(const float _kfX);
 bool PerformTestFloor(const float _kfX);
 bool PerformTestCeiling(const float _kfX);
