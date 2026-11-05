@@ -33,15 +33,22 @@ float Signum(const float _kfX){
 
 //Rounds down towards zero
 float Floor(const float _kfX) {
+    if (isNaN(_kfX) || _kfX == 0.0f) return _kfX;
+    if (_kfX >= 2147483647.0f || _kfX <= -2147483647.0f) return _kfX;
     float _fT = static_cast<float>(static_cast<int>(_kfX));
-    if (_fT > _kfX) {
-        _fT -= 1.0f;
-    };
+    if (_fT > _kfX) _fT -= 1.0f;
     return _fT;
 }
 //Rounds up away from zero
 float Ceiling(const float _kfX) {
-    float _fT = static_cast<float>(static_cast<int>(_kfX));
+    if (isNaN(_kfX) || _kfX == 0.0f) {
+        return _kfX;
+    }
+    if (_kfX == static_cast<int>(_kfX) || _kfX > 2147483647.0f || _kfX < -2147483647.0f) {
+        return _kfX;
+    }
+    int _iT = static_cast<int>(_kfX);
+    float _fT = static_cast<float>(_iT);
     if (_fT < _kfX) {
         _fT += 1.0f;
     };
