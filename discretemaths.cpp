@@ -57,6 +57,9 @@ float Ceiling(const float _kfX) {
 //Multuply all ints from 1 to given factorial 5 1x2x3x4x5
 unsigned long long Factorial(const unsigned int _kdn) {
     unsigned long long _dr = 1;
+    if (isNaN(_kdn)) return _kdn;
+    // this still doesnt work how i want it too. 
+    if (_kdn > 20) return 0;
     //skipped 1, starting at 2, because multiply by 1 is useless
     for (unsigned int i = 2; i <= _kdn; ++i) {
         _dr *= i;
@@ -64,12 +67,19 @@ unsigned long long Factorial(const unsigned int _kdn) {
     return _dr;
 }
 //Order doesnt matter in combination, so number of ways to choose n from r. n!/(r!(n−r)!)
+// need to fix divide by zero
 unsigned long long Combination(const unsigned int _kuin, const unsigned int _kuir) {
-    return Factorial(_kuin) / (Factorial(_kuir) * Factorial(_kuin - _kuir));
+    //added bountry cheked
+    if (_kuir > _kuin) return 0;
+    unsigned long long _ulln = Factorial(_kuin);
+    unsigned long long _ulld = Factorial(_kuir) * Factorial(_kuin - _kuir);
+    if (_ulld == 0) return 0;
+    return _ulln / _ulld;
 }
 
 //Order does matter in Permutation n!/(n−r)!
 unsigned long long Permutation(const unsigned int _kuin, const unsigned int _kuir) {
+    if (_kuir > _kuin) return 0;
     return Combination(_kuin, _kuir) * Factorial(_kuir);
 }
 //How many unique elements in a set.
