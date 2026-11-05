@@ -7,20 +7,20 @@
       "RelativeMoniker": "D:0:0:{3B6C40A2-62A4-444E-8526-68E4EB2B2EEC}|MATH101_Project2.vcxproj|solutionrelative:test.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3B6C40A2-62A4-444E-8526-68E4EB2B2EEC}|MATH101_Project2.vcxproj|C:\\Users\\mrgwd\\Desktop\\Source - Gareth Duncan\\MAT101_Project2\\test.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{3B6C40A2-62A4-444E-8526-68E4EB2B2EEC}|MATH101_Project2.vcxproj|solutionrelative:test.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B6C40A2-62A4-444E-8526-68E4EB2B2EEC}|MATH101_Project2.vcxproj|C:\\Users\\mrgwd\\Desktop\\Source - Gareth Duncan\\MAT101_Project2\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{3B6C40A2-62A4-444E-8526-68E4EB2B2EEC}|MATH101_Project2.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{3B6C40A2-62A4-444E-8526-68E4EB2B2EEC}|MATH101_Project2.vcxproj|C:\\Users\\mrgwd\\Desktop\\Source - Gareth Duncan\\MAT101_Project2\\discretemaths.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3B6C40A2-62A4-444E-8526-68E4EB2B2EEC}|MATH101_Project2.vcxproj|solutionrelative:discretemaths.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3B6C40A2-62A4-444E-8526-68E4EB2B2EEC}|MATH101_Project2.vcxproj|C:\\Users\\mrgwd\\Desktop\\Source - Gareth Duncan\\MAT101_Project2\\discretemaths.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{3B6C40A2-62A4-444E-8526-68E4EB2B2EEC}|MATH101_Project2.vcxproj|solutionrelative:discretemaths.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3B6C40A2-62A4-444E-8526-68E4EB2B2EEC}|MATH101_Project2.vcxproj|C:\\Users\\mrgwd\\Desktop\\Source - Gareth Duncan\\MAT101_Project2\\discretemaths.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{3B6C40A2-62A4-444E-8526-68E4EB2B2EEC}|MATH101_Project2.vcxproj|solutionrelative:discretemaths.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{3B6C40A2-62A4-444E-8526-68E4EB2B2EEC}|MATH101_Project2.vcxproj|C:\\Users\\mrgwd\\Desktop\\Source - Gareth Duncan\\MAT101_Project2\\test.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3B6C40A2-62A4-444E-8526-68E4EB2B2EEC}|MATH101_Project2.vcxproj|solutionrelative:test.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B6C40A2-62A4-444E-8526-68E4EB2B2EEC}|MATH101_Project2.vcxproj|C:\\Users\\mrgwd\\Desktop\\Source - Gareth Duncan\\MAT101_Project2\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3B6C40A2-62A4-444E-8526-68E4EB2B2EEC}|MATH101_Project2.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -40,46 +40,15 @@
               "RelativeDocumentMoniker": "test.cpp",
               "ToolTip": "C:\\Users\\mrgwd\\Desktop\\Source - Gareth Duncan\\MAT101_Project2\\test.cpp",
               "RelativeToolTip": "test.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAACAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-10-31T12:04:08.74Z",
+              "IsPinned": true,
               "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 1,
-          "Children": [
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\mrgwd\\Desktop\\Source - Gareth Duncan\\MAT101_Project2\\main.cpp",
-              "RelativeDocumentMoniker": "main.cpp",
-              "ToolTip": "C:\\Users\\mrgwd\\Desktop\\Source - Gareth Duncan\\MAT101_Project2\\main.cpp",
-              "RelativeToolTip": "main.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-11-04T07:23:48.259Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "test.h",
-              "DocumentMoniker": "C:\\Users\\mrgwd\\Desktop\\Source - Gareth Duncan\\MAT101_Project2\\test.h",
-              "RelativeDocumentMoniker": "test.h",
-              "ToolTip": "C:\\Users\\mrgwd\\Desktop\\Source - Gareth Duncan\\MAT101_Project2\\test.h",
-              "RelativeToolTip": "test.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-11-04T07:17:20.463Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "discretemaths.h",
               "DocumentMoniker": "C:\\Users\\mrgwd\\Desktop\\Source - Gareth Duncan\\MAT101_Project2\\discretemaths.h",
               "RelativeDocumentMoniker": "discretemaths.h",
@@ -87,20 +56,46 @@
               "RelativeToolTip": "discretemaths.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-11-03T22:11:48.363Z",
+              "WhenOpened": "2026-11-05T04:26:05.076Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "discretemaths.cpp",
               "DocumentMoniker": "C:\\Users\\mrgwd\\Desktop\\Source - Gareth Duncan\\MAT101_Project2\\discretemaths.cpp",
               "RelativeDocumentMoniker": "discretemaths.cpp",
               "ToolTip": "C:\\Users\\mrgwd\\Desktop\\Source - Gareth Duncan\\MAT101_Project2\\discretemaths.cpp",
               "RelativeToolTip": "discretemaths.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-11-03T22:02:29.783Z",
+              "WhenOpened": "2026-11-05T03:20:22.495Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\mrgwd\\Desktop\\Source - Gareth Duncan\\MAT101_Project2\\main.cpp",
+              "RelativeDocumentMoniker": "main.cpp",
+              "ToolTip": "C:\\Users\\mrgwd\\Desktop\\Source - Gareth Duncan\\MAT101_Project2\\main.cpp",
+              "RelativeToolTip": "main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-11-05T02:03:43.008Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "test.h",
+              "DocumentMoniker": "C:\\Users\\mrgwd\\Desktop\\Source - Gareth Duncan\\MAT101_Project2\\test.h",
+              "RelativeDocumentMoniker": "test.h",
+              "ToolTip": "C:\\Users\\mrgwd\\Desktop\\Source - Gareth Duncan\\MAT101_Project2\\test.h",
+              "RelativeToolTip": "test.h",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAkwAcAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-11-05T02:03:52.892Z",
               "EditorCaption": ""
             }
           ]

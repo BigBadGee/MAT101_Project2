@@ -1,12 +1,31 @@
 #include "discretemaths.h"
+//#include "test.h"
+
+bool isNaN(float _kfX) {
+
+    union { float _fF; unsigned int _uiI; } _uU;
+    _uU._fF = _kfX;
+    //using bitwise & to remove the sign of nan 
+    //0x7FFFFFFF = 0111 1111 1111 1111 1111 1111 1111 1111 - leaves the first bit which is the sign 
+    return (_uU._uiI & 0x7FFFFFFFu) > 0x7F800000u;
+}
+
+bool isNegative(float _kfX) {
+    union { float _fF; unsigned int _uiI; } _uU;
+    _uU._fF = _kfX;
+    //return true if non zero and false if not.
+    return (_uU._uiI & 0x80000000u) != 0u;
+}
+// I know union hasnt been taught in class, but I need to be handle to handle nan's
+
 
 //The size of the variable
 float Magnitude(const float _kfX) {
-    return (_kfX < 0.0f) ? -_kfX : ((_kfX == 0.0f) ? 0.0f : _kfX);
+    return (_kfX < 0.0f) ? (0.0f - _kfX) : ((_kfX == 0.0f) ? 0.0f : _kfX);
 }
 //Positive, Negitive or 0 
-float Signum(const float _kfX)
-{
+float Signum(const float _kfX){
+    if (isNaN(_kfX)) return _kfX;
     if (_kfX > 0.0f) return  1.0f;
     if (_kfX < 0.0f) return -1.0f;
     return 0.0f;
