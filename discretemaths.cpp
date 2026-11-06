@@ -93,11 +93,11 @@ int Cardinality(Set& _rSet){
 }
 
 //The power set is set of all Subetsets include the set itself and a empty set, this confused me because it return  
-// So i guess return the number of possible subsets? 
+//Calculate power of
 unsigned long long Power(Set& _rSet) {
-    int _iC = Cardinality(_rSet);        
+    unsigned long long _ullC = Cardinality(_rSet);
     unsigned long long _ullR = 1;
-    for (int i = 0; i < _iC; i++) {
+    for (int i = 0; i < _ullC; i++) {
         _ullR *= 2;
     }
     return _ullR;

@@ -49,63 +49,51 @@ bool PerformTestPermutation(const unsigned long long _kullc, const float _expect
 	return _kullc == _expectedState;
 }
 
-bool PerformTestCardinality(Set& _rSet)
-{
+bool PerformTestCardinality(Set& _rSet, const int _expectedState) {
+	return Cardinality(_rSet) == _expectedState;
+}
+
+bool PerformTestPower(Set& _rSet, const int _expectedState) {
+	return Power(_rSet) == _expectedState;
+}
+
+bool PerformTestCartesianProduct(Set& _rA, Set& _rB, const unsigned long long _expectedState) {
+	return CartesianProduct(_rA, _rB) == _expectedState;
+}
+
+bool PerformTestEquals(Set& _rA, Set& _rB, const bool _expectedState) {
+	return Equals(_rA, _rB) == _expectedState;
+}
+
+bool PerformTestSubset(Set& _rA, Set& _rB, bool _bExpectedState) {
+	return Subset(_rA, _rB) == _bExpectedState;
+}
+
+bool PerformTestSuperset(Set& _rA, Set& _rB) {
 	return false;
 }
 
-bool PerformTestPower(Set& _rSet)
-{
+bool PerformTestDisjoint(Set& _rA, Set& _rB, Set& _rResultant) {
 	return false;
 }
 
-bool PerformTestCartesianProduct(Set& _rA, Set& _rB)
-{
+bool PerformTestUnion(Set& _rA, Set& _rB, Set& _rResultant) {
 	return false;
 }
 
-bool PerformTestEquals(Set& _rA, Set& _rB)
-{
+bool PerformTestIntersection(Set& _rA, Set& _rB, Set& _rResultant) {
 	return false;
 }
 
-bool PerformTestSubset(Set& _rA, Set& _rB)
-{
+bool PerformTestSetDifference(Set& _rA, Set& _rB, Set& _rResultant) {
 	return false;
 }
 
-bool PerformTestSuperset(Set& _rA, Set& _rB)
-{
+bool PerformTestSymmetricDifference(Set& _rA, Set& _rB, Set& _rResultant) {
 	return false;
 }
 
-bool PerformTestDisjoint(Set& _rA, Set& _rB, Set& _rResultant)
-{
-	return false;
-}
-
-bool PerformTestUnion(Set& _rA, Set& _rB, Set& _rResultant)
-{
-	return false;
-}
-
-bool PerformTestIntersection(Set& _rA, Set& _rB, Set& _rResultant)
-{
-	return false;
-}
-
-bool PerformTestSetDifference(Set& _rA, Set& _rB, Set& _rResultant)
-{
-	return false;
-}
-
-bool PerformTestSymmetricDifference(Set& _rA, Set& _rB, Set& _rResultant)
-{
-	return false;
-}
-
-bool PerformTestComplement(Set& _rA, Set& _rResultant)
-{
+bool PerformTestComplement(Set& _rA, Set& _rResultant) {
 	return false;
 }
 void RunAlTests() {
@@ -132,7 +120,35 @@ void RunAlTests() {
 	const unsigned long long _kullCES[6] = { 1 ,5 ,1 ,45 ,252, 0};
 	//Permutations
 	const unsigned long long _kullPES[6] = { 1 ,5, 120 ,90 ,30240, 0 };
+	Set _sT0;
+	_sT0.SetClear();
 
+	Set _sT1;
+	_sT1.SetClear();
+	_sT1.AddElement(1);
+	_sT1.AddElement(34);
+	_sT1.AddElement(55);
+	_sT1.AddElement(6);
+	_sT1.AddElement(15);
+
+
+	Set _sT2;
+	_sT2.SetClear();
+	_sT2.AddElement(1);
+	_sT2.AddElement(34);
+	_sT2.AddElement(55);
+	_sT2.AddElement(6);
+	_sT2.AddElement(15);
+	_sT2.AddElement(9);
+
+	Set _sT3;
+	_sT3.SetClear();
+	_sT3.AddElement(55);
+	_sT3.AddElement(1);
+	_sT3.AddElement(15);
+	_sT3.AddElement(34);
+	_sT3.AddElement(6);
+	_sT3.AddElement(1);
 	
 	//Magnitude Testing 
 	for (int i = 0; i < 10; i++) {
@@ -212,5 +228,142 @@ void RunAlTests() {
 		}
 	};
 
+	
+
+
+	//Cardinailty testing
+	if (PerformTestCardinality(_sT1, 5)) {
+		_uiPassedTests++;
+	}
+	else {
+		_uiFailTests++;
+		std::cout << "######### Cardinailty Test Failed #########\n";
+		std::cout << "Expected: 5";
+	}
+	//Power testing
+	if (PerformTestPower(_sT1, 32)) {
+		_uiPassedTests++;
+	}
+	else {
+		_uiFailTests++;
+		std::cout << "######### Power Test Failed #########\n";
+		std::cout << "Expected: 32 Outcome: " << Power(_sT1) << "\n";
+	}
+	
+	if (PerformTestPower(_sT2, 64)) {
+		_uiPassedTests++;
+	}
+	else {
+		_uiFailTests++;
+		std::cout << "######### Power Test Failed #########\n";
+		std::cout << "Expected: 64 Outcome: " << Power(_sT2)<< "\n" ;
+	}
+	//Cartesian Product testing;
+	if (PerformTestCartesianProduct(_sT1, _sT2,30)) {
+		_uiPassedTests++;
+	}
+	else {
+		_uiFailTests++;
+		std::cout << "######### Cartesian Product Test Failed #########\n";
+		std::cout << "Expected: 30 Outcome: " << CartesianProduct(_sT1, _sT2) << "\n";
+	}
+	//Equals testing;
+	if (PerformTestEquals(_sT1, _sT1, 1)) {
+		_uiPassedTests++;
+	}
+	else {
+		_uiFailTests++;
+		std::cout << "######### Equals Test 1 Failed #########\n";
+		std::cout << "Expected: 1 Outcome: " << Equals(_sT1, _sT2) << "\n";
+	}
+	
+	if (PerformTestEquals(_sT2, _sT1, 0)) {
+		_uiPassedTests++;
+	}
+	else {
+		_uiFailTests++;
+		std::cout << "######### Equals Test 2 Failed #########\n";
+		std::cout << "Expected: 0 Outcome: " << Equals(_sT2, _sT1) << "\n";
+	}
+	if (PerformTestEquals(_sT1, _sT3, 1)) {
+		_uiPassedTests++;
+	}
+	else {
+		_uiFailTests++;
+		std::cout << "######### Equals Test 3 Failed #########\n";
+		std::cout << "Expected: 1 Outcome: " << Equals(_sT1, _sT3) << "\n";
+	}
+	//Subset testing
+	if (PerformTestSubset(_sT1, _sT2, 1)) {
+		_uiPassedTests++;
+	}
+	else {
+		_uiFailTests++;
+		std::cout << "######### Subset Test 1 Failed #########\n";
+		std::cout << "Expected: 1 Outcome: " << Subset(_sT1, _sT2) << "\n";
+	}
+	if (PerformTestSubset(_sT2, _sT1, 0)) {
+		_uiPassedTests++;
+	}
+	else {
+		_uiFailTests++;
+		std::cout << "######### Subset Test 2 Failed #########\n";
+		std::cout << "Expected: 1 Outcome: " << Subset(_sT2, _sT1) << "\n";
+	}
+	if (PerformTestSubset(_sT1, _sT1, 1)) {
+		_uiPassedTests++;
+	}
+	else {
+		_uiFailTests++;
+		std::cout << "######### Subset Test 3 Failed #########\n";
+		std::cout << "Expected: 1 Outcome: " << Subset(_sT1, _sT1) << "\n";
+	}
+	if (PerformTestSubset(_sT0, _sT1, 1)) {
+		_uiPassedTests++;
+	}
+	else {
+		_uiFailTests++;
+		std::cout << "######### Subset Test 4 Failed #########\n";
+		std::cout << "Expected: 1 Outcome: " << Subset(_sT0, _sT1) << "\n";
+	}
+	if (PerformTestSubset(_sT1, _sT1, 1)) {
+		_uiPassedTests++;
+	}
+	else {
+		_uiFailTests++;
+		std::cout << "######### Subset Test 4 Failed #########\n";
+		std::cout << "Expected: 1 Outcome: " << Subset(_sT1, _sT1) << "\n";
+	}
+		if (PerformTestSubset(_sT1, _sT1, 1)) {
+		_uiPassedTests++;
+	}
+	else {
+		_uiFailTests++;
+		std::cout << "######### Subset Test 4 Failed #########\n";
+		std::cout << "Expected: 1 Outcome: " << Subset(_sT1, _sT1) << "\n";
+	}
+	if (PerformTestSubset(_sT1, _sT1, 1)) {
+		_uiPassedTests++;
+	}
+	else {
+		_uiFailTests++;
+		std::cout << "######### Subset Test 4 Failed #########\n";
+		std::cout << "Expected: 1 Outcome: " << Subset(_sT1, _sT1) << "\n";
+	}
+	if (PerformTestSubset(_sT0, _sT1, 1)) {
+		_uiPassedTests++;
+	}
+	else {
+		_uiFailTests++;
+		std::cout << "######### Subset Test 4 Failed #########\n";
+		std::cout << "Expected: 1 Outcome: " << Subset(_sT0, _sT1) << "\n";
+	}
+	//Superset testing
+	//Disjoint testing
+	//Union testing
+	//Intersection testing
+	//SetDifference testing
+	//SymmetricDifference testing
+	//Complement testing 
 	std::cout << "Passed: " << _uiPassedTests << " | Failed: " << _uiFailTests << "\n";
 }
