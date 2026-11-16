@@ -16,7 +16,7 @@ bool PerformTestSignum(const float _kfX, const float _expectedState) {
 	if (isNaN(_kfX) || isNaN(_expectedState)) {
 		return isNaN(_kfX) && isNaN(_expectedState);
 	}
-	return _kfX == _expectedState;
+	return (_kfX == _expectedState) && (isNegative(_kfX) == isNegative(_expectedState));
 } 
 
 bool PerformTestFloor(const float _kfX, const float _expectedState) {
@@ -33,18 +33,16 @@ bool PerformTestCeiling(const float _kfX, const float _expectedState){
 	return _kfX == _expectedState;
 }
 
-bool PerformTestFactorial(const unsigned int _kdn, const float _expectedState){
-if (isNaN(_kdn) || isNaN(_expectedState)) {
-	return isNaN(_kdn) && isNaN(_expectedState);
+bool PerformTestFactorial(const unsigned int _kdn, const unsigned long long _expectedState) {
+	return Factorial(_kdn) == _expectedState;
 }
-return _kdn == _expectedState;
-}
+
 
 bool PerformTestCombination(const unsigned long long _kullc,  const unsigned long long _expectedState){
 	return _kullc == _expectedState;
 }
 
-bool PerformTestPermutation(const unsigned long long _kullc, const float _expectedState)
+bool PerformTestPermutation(const unsigned long long _kullc, const unsigned long long _expectedState)
 {
 	return _kullc == _expectedState;
 }
@@ -120,7 +118,7 @@ void RunAlTests() {
 	//Unsigned int inputs
 	const unsigned int _kaF[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 	//Facotrial 
-	const unsigned int _kaFES[10] = { 1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880 };
+	const unsigned long long _kaFES[10] = { 1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880 };
 	//combinations 
 	const unsigned int _kaaiC[6][2] = { {5, 0},{5, 1},{5, 5},{10, 2},{10, 5},{5, 6}};
 	const unsigned long long _kullCES[6] = { 1 ,5 ,1 ,45 ,252, 0};
@@ -265,33 +263,45 @@ void RunAlTests() {
 			std::cout << "Value: " << _kaT[i] << " Outcome " << _fResult << "  Expected : " << _aCES[i] << "\n";
 		}
 	}
+	// Factorial testing
+	for (int i = 0; i < 10; i++) {
+		unsigned long long _ullResult = Factorial(_kaF[i]);
+		if (PerformTestFactorial(_kaF[i], _kaFES[i])) {
+			_uiPassedTests++;
+		}
+		else {
+			_uiFailTests++;
+			std::cout << "######### Factorial Test Failed #########\n";
+			std::cout << "Value: " << _kaF[i] << " Outcome " << _ullResult << "  Expected : " << _kaFES[i] << "\n";
+		}
+	}
 	//Combination testing 
 
 	for (int i = 0; i < 6; i++) {
-		int _fResult = Combination(_kaaiC[i][0], _kaaiC[i][1]);
-		if (PerformTestCombination(_fResult, _kullCES[i])) {
+		unsigned long long _ullResult = Combination(_kaaiC[i][0], _kaaiC[i][1]);
+		if (PerformTestCombination(_ullResult, _kullCES[i])) {
 			_uiPassedTests++;
 
 		}
 		else {
 			_uiFailTests++;
 			std::cout << "######### Combination Test Failed #########\n";
-			std::cout << "Value: " << _kaaiC[i][0] << "," << _kaaiC[i][1] << " Outcome " << _fResult << "  Expected : " << _kullCES[i] << "\n";
+			std::cout << "Value: " << _kaaiC[i][0] << "," << _kaaiC[i][1] << " Outcome " << _ullResult << "  Expected : " << _kullCES[i] << "\n";
 		}
 	};
 
 	//Permutation testing
 
 	for (int i = 0; i < 6; i++) {
-		int _fResult = Permutation(_kaaiC[i][0], _kaaiC[i][1]);
-		if (PerformTestPermutation(_fResult, _kullPES[i])) {
+		unsigned long long _ullResult = Permutation(_kaaiC[i][0], _kaaiC[i][1]);
+		if (PerformTestPermutation(_ullResult, _kullPES[i])) {
 			_uiPassedTests++;
 
 		}
 		else {
 			_uiFailTests++;
 			std::cout << "######### Combination Test Failed #########\n";
-			std::cout << "Value: " << _kaaiC[i][0] << "," << _kaaiC[i][1] << " Outcome " << _fResult << "  Expected : " << _kullPES[i] << "\n";
+			std::cout << "Value: " << _kaaiC[i][0] << "," << _kaaiC[i][1] << " Outcome " << _ullResult << "  Expected : " << _kullPES[i] << "\n";
 		}
 	};
 
@@ -512,7 +522,7 @@ void RunAlTests() {
 	}
 	//SymmetricDifference testing
 	_rResultant.SetClear();
-	if (PerformTestSymmetricDifference(SymmetricDifference(_sU1, _sU2, _rResultant), _sSDES1)) _uiPassedTests;
+	if (PerformTestSymmetricDifference(SymmetricDifference(_sU1, _sU2, _rResultant), _sSDES1)) _uiPassedTests++;
 	else {
 		_uiFailTests++;
 		std::cout << "######### Symmetric Difference Test Failed #########\n";
@@ -529,8 +539,10 @@ void RunAlTests() {
 		}
 		std::cout << "}\n";
 	}
-	//Complement testing 
-	if (PerformTestComplement(_sU1,Complement(_sU1, _rResultant), (SET_SIZE_MAX - Cardinality(_sU1)))) _uiPassedTests++;
+	//Complement test
+	_rResultant.SetClear();
+	Complement(_sU1, _rResultant);
+	if (PerformTestComplement(_sU1, _rResultant, SET_SIZE_MAX - Cardinality(_sU1))) _uiPassedTests++;
 	else {
 		_uiFailTests++;
 		std::cout << "######### Complement Test Failed #########\n";
